@@ -33,7 +33,6 @@
     Arial, Noto Sans, Liberation Sans, sans-serif, Apple Color Emoji,
     Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
 
-  /* SVG icons */
   --bs-breadcrumb-divider: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='8' width='8' fill='none' viewbox='0 0 24 24' stroke='%23686868'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1' d='M 0.5,0.5 4,4 0.5,7.5'/%3E%3C/svg%3E");
 }
 
@@ -208,7 +207,6 @@ input:checked ~ .d-none-check {
   opacity: 1;
 }
 
-/* Theme Style */
 
 pre {
   background-color: var(--bg-light);
@@ -414,7 +412,6 @@ body > .google-auto-placed {
   margin: 0 !important;
 }
 
-/* TYPOGRAPY */
 
 .h1,
 h1 {
@@ -457,7 +454,6 @@ h6 {
   margin-bottom: 0.5rem;
 }
 
-/* Responsive Style */
 
 @media (min-width: 576px) {
   .ratio-sm-4x3 {
@@ -694,7 +690,6 @@ h6 {
   }
 }
 
-/*Your custom CSS is here*/
 .text-green {
   color: var(--text-green);
 }
@@ -707,7 +702,6 @@ h6 {
   background-color: color-mix(in srgb, var(--bs-green), transparent 98%);
 }
 
-/*custom btn*/
 .btn-primary,
 .btn-outline-primary:hover {
   color: #fff;
@@ -775,7 +769,6 @@ input:checked + .btn-outline-primary {
   overflow: hidden;
 }
 
-/* Smooth transition for all elements */
 * {
   box-sizing: border-box;
 }
