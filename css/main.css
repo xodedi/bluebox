@@ -64,17 +64,17 @@
   --placeholder-color: hsl(210, 11%, 50%);
   .shadow {
     box-shadow: 0 .5rem 1rem hsl(210,1%,25%) !important;
-  };
+  }
   .breadcrumb-item + .breadcrumb-item::before {
     filter: brightness(5) contrast(5);
-  };
+  }
   .form-control::placeholder {
     color: var(--placeholder-color);
     opacity: 1;
-  };
+  }
   img {
     filter: brightness(0.9);
-  };
+  }
 }
 body {
   font: 400 16px/1.5 var(--bs-font-sans-serif);
