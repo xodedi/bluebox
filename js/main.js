@@ -141,7 +141,7 @@ const jo = {};
             if ("IMG" !== e.tagName) return;
             let t = e.getAttribute("data-src");
             if (!t) return;
-            if (t = t.replace(/(https?:)?\/\/blogger\.googleusercontent\.com\//g, location.origin + "/cdn/data/").replace(/(https?:)?\/\/[1-4]\.bp\.blogspot\.com\//g, location.origin + "/cdn/image/"), /(img\.youtube|i\.ytimg)/.test(t)) return t = t.substring(0, t.indexOf("/")) + "/mqdefault.jpg", void e.setAttribute("data-src", t);
+            if (t = t.replace(/(https?:)?\/\/blogger\.googleusercontent\.com\/(img\/b\/)?/g, location.origin + "/cdn/img/gc/").replace(/(https?:)?\/\/[1-4]\.bp\.blogspot\.com\//g, location.origin + "/cdn/img/bp/"), /(img\.youtube|i\.ytimg)/.test(t)) return t = t.substring(0, t.indexOf("/")) + "/mqdefault.jpg", void e.setAttribute("data-src", t);
             const a = e.parentElement || e,
                 n = a.getBoundingClientRect();
             let o = n.width || e.offsetWidth || 1600,
