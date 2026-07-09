@@ -388,7 +388,7 @@ blockquote {
   border-bottom: 2px solid var(--primary);
   margin-top: 10px;
 }
-#main .widget-title > span {
+#blog-post .widget-title > span {
   background-color: var(--bs-body-bg);
   padding: 0 5px 0 5px;
   position: relative;
