@@ -87,11 +87,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
-.d-block,
-.no-items,
-.blog-admin {
-  display: none;
-}
 a,
 .link {
   transition-property: background-color, border-color, color, fill, stroke;
