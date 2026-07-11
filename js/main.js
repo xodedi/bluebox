@@ -345,7 +345,7 @@ const jo = {};
                 d = a[b]("span");
             return ke(d, "btn btn-sm rounded-pill "), d[g] = i || e, d[$ + j]("data-page", e), e == r ? ke(d, "btn-primary") : (ke(d, "btn-light hover-btn-primary"), d[w + v](Q, (function(e) {
                 var a;
-                e[q](), 1 == (p = d[P + j]("data-page")) ? (a = o ? ce + "/blog" + c + "?max-results=" + n + "&page=" + p : ce, t[B][R] = a) : (a = (p - 1) * n, Defer.js(ce + "/feeds/posts/summary/" + s + "?start-index=" + a + "&alt=json&callback=jo." + te + "_date&max-results=1"))
+                e[q](), 1 == (p = d[P + j]("data-page")) ? (a = o ? ce + "/blog" + c + "?max-results=" + f + "&page=" + p : ce + "/blog?max-results=" + f + "&page=" + p, t[B][R] = a) : (a = (p - 1) * n, Defer.js(ce + "/feeds/posts/summary/" + s + "?start-index=" + a + "&alt=json&callback=jo." + te + "_date&max-results=1"))
             }))), l[C](d), l
         }
         e[P + j]("data-pagination") != J ? (n = e[P + j]("data-posts"), o = e[P + j]("data-label"), s = (o = l(o)) ? "-/" + o + "/" : "", c = o ? "/label/" + o : "", Defer.js(ce + "/feeds/posts/summary/" + s + "?alt=json&callback=jo." + te + "_" + x + "&max-results=1"), d = je("max-results", de), u = je("page", de), f = d || n, p = u || 1, jo[te + "_" + x] = function(t) {
