@@ -139,7 +139,6 @@ const jo = {};
         Oe = a[p]("comment-script"),
         qe = a[h](".comment-reply"),
         Fe = a[h](".entry-text noscript"),
-        He = a[h](".contact-form-blogger"),
         Ne = a[p]("ads-post"),
         Ge = a[p]("post-body"),
         Ye = a[m](".related-posts"),
