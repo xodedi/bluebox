@@ -119,11 +119,7 @@ const jo = {};
         } catch (e) {
             return !1
         }
-    }(e = new f).onload = e.onerror = function() {
-        ! function(e) {
-            e || ""
-        }(2 == e.height)
-    }, e.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
+    }
     var Pe = a[p]("header"),
         Se = a[p]("search-toggle"),
         Ce = a[p]("search-header"),
