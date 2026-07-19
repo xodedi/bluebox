@@ -1,5 +1,5 @@
  /*!
-  * jastar Theme   v1.0.9  (https://jastar.id/)
+  * jastar Theme   v1.1.0  (https://jastar.id/)
   * Copyright 2018-2026 The jastar.id Authors
   * Licensed under MIT
   */
