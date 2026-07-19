@@ -63,7 +63,7 @@ const jo = {};
         le = typeof isPreview !== Z && isPreview,
         se = typeof siteUrl !== Z ? siteUrl[F](0, siteUrl[I] - 1)[A](/(^\w+:|^)\/\//, "") : "",
         ce = re + se,
-        de = typeof currentUrl !== Z ? currentUrl : "",
+        de = typeof currentUrl !== Z ? currentUrl : t[B][R],
         ue = typeof blogId !== Z ? blogId : "",
         fe = typeof blogTitle !== Z ? blogTitle : "",
         ge = typeof titleSeparator !== Z ? titleSeparator : " - ",
@@ -101,7 +101,11 @@ const jo = {};
     }
 
     function je(e, t) {
-        return !!(e = new s("[?&]" + e + "=([^&#=]*)")).test(t) && t[M](e)[1]
+        try {
+            return new URL(t || location[R]).searchParams[P](e)
+        } catch (n) {
+            return !1
+        }
     }
 
     function $e(e) {
@@ -141,7 +145,7 @@ const jo = {};
             if ("IMG" !== e.tagName) return;
             let t = e.getAttribute("data-src");
             if (!t) return;
-            if (t = t.replace(/(https?:)?\/\/blogger\.googleusercontent\.com\/(img\/b\/)?/g, location.origin + "/cdn/img/gc/").replace(/(https?:)?\/\/[1-4]\.bp\.blogspot\.com\//g, location.origin + "/cdn/img/bp/"), /(img\.youtube|i\.ytimg)/.test(t)) return t = t.substring(0, t.indexOf("/")) + "/mqdefault.jpg", void e.setAttribute("data-src", t);
+            if (t = t.replace(/(https?:)?\/\/blogger\.googleusercontent\.com\/(img\/[^\/]+\/)?/g, location.origin + "/cdn/img/gc/").replace(/(https?:)?\/\/[1-4]\.bp\.blogspot\.com\//g, location.origin + "/cdn/img/bp/"), /(img\.youtube|i\.ytimg)/.test(t)) return t = t.substring(0, t.indexOf("/")) + "/mqdefault.jpg", void e.setAttribute("data-src", t);
             const a = e.parentElement || e,
                 n = a.getBoundingClientRect();
             let o = n.width || e.offsetWidth || 1600,
@@ -167,23 +171,6 @@ const jo = {};
                 };
             f.test(t) ? t = t.replace(f, ((e, t) => `/${m(t)}/`)) : g.test(t) ? t = t.replace(g, ((e, t) => `/${m(t)}/`)) : u.test(t) ? t = t.replace(u, ((e, t) => `/${m(t)}/`)) : p.test(t) && (t = t.replace(p, ((e, t) => `=${m(t)}`))), e.setAttribute("data-src", t)
         };
-    async function Ve(e, t) {
-        try {
-            console.log("Fetching:", e);
-            const o = await fetch(e);
-            if (!o.ok) throw new Error("Status: " + o.status);
-            const r = await o.text();
-            console.log("Len:", r.length);
-            const i = /<title>\s*(.*?)\s*<\/title>/i,
-                l = r[M](i);
-            if (l && l[1]) {
-                var a = l[1][L](),
-                    n = ge + fe; - 1 !== a.indexOf(n) ? t[g] = a[A](n, "") : t[g] = a, console.log("Title:", t[g])
-            } else console.warn("No match:", r[F](0, 200)), t[g] = "Judul Default"
-        } catch (e) {
-            console.error("Err:", e), t[g] = "Error Fetch"
-        }
-    }
 
     function Ke() {
         (Se && Se[S] || _e && _e[S] ? xe : ke)(Pe, "header-animate")
@@ -268,32 +255,18 @@ const jo = {};
                 (we(e, t) ? xe : ke)(e, t)
             }(ze, "dark-mode"), null !== d && d[$ + Y]("theme", we(ze, "dark-mode") ? "dark" : "light")
     })), t[w + v](W, (function() {
-    const backToTop = a[p]('back-to-top');
     if (this.pageYOffset > 650) {
-        backToTop.classList[w]('show');
+        Me.classList[w]('show');
     } else {
-        backToTop.classList[k]('show');
+        Me.classList[k]('show');
     }
-    }), !1), Le && Le[w + v]("load", (function(e) {
+    }), { passive: !0 }), Le && Le[w + v]("load", (function(e) {
         xe(Te, "loader")
     })), Be && Be[w + v](Q, (function(e) {
         e[q](), et(this[R]), "add-comment" != Te[O].id && a[p]("add-comment")[C](Te)
     }));
     for (var tt = 0; tt < qe[I]; ++tt) qe[tt][w + v](Q, (function(e) {
         e[q](), e = this[P + j]("data-comment-id"), et(this[R]), Te[O].id != "c" + e && a[p]("c" + e)[C](Te)
-    }));
-    for (tt = 0; tt < He[I]; ++tt) He[tt][w + v]("submit", (function(e) {
-        e[q]();
-        var t = e[z];
-        ke(t, "loading");
-        var a = new FormData(t),
-            n = "blogID=" + ue;
-        a.forEach((function(e, t) {
-            n += "&" + l(t) + "=" + l(e)
-        })), e = re + ie + "contact-form.do", (a = new c).open("post", e), a.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"), a.send(n), a.onreadystatechange = function() {
-            var e;
-            xe(t, "loading"), 4 === this.readyState && 200 === this.status && "" != this.response && ((e = $e(this.responseText[L]())) && "true" == e.details.emailSentStatus ? (t.reset(), xe(t, "send-error"), ke(t, "send-success")) : (xe(t, "send-success"), ke(t, "send-error")))
-        }
     }));
 
     function at(e) {
@@ -328,24 +301,15 @@ const jo = {};
             e("js", new Date), e("config", me)
         })), ve && ve())
     }
-    We && (a[H] = a[H][A](ge, ge + pe + " " + We + ge)), Defer.dom(".lazyload", 1, "loaded", Xe), Defer.dom("#post-pager", 1, null, (function(e) {
-        for (var t = e[h]("a"), n = 0; n < t[I]; ++n) {
-            var o = t[n],
-                r = o[R],
-                i = a[b]("span");
-            ke(i, "d-block fw-bold pt-2 text-primary"), o[C](i), Ve(r, i)
-        }
-    }), null, {
-        rootMargin: "200%"
-    }), Defer.dom("#pagination", 1, null, (function(e) {
+    We && (a[H] = a[H][A](ge, ge + pe + " " + We + ge)), Defer.dom(".lazyload", 1, "loaded", Xe), Defer.dom("#pagination", 1, null, (function(e) {
         var n, o, s, c, d, u, f, p;
 
         function m(e, r, i) {
             var l = a[b]("li"),
                 d = a[b]("span");
-            return ke(d, "btn btn-sm rounded-pill "), d[g] = i || e, d[$ + j]("data-page", e), e == r ? ke(d, "btn-primary") : (ke(d, "btn-light hover-btn-primary"), d[w + v](Q, (function(e) {
+            return ke(d, "btn btn-sm rounded-pill "), d[g] = i || e, d[$ + j]("data-page", e), d[$ + j]("aria-current", e == r ? "page" : "false"), e == r ? ke(d, "btn-primary") : (ke(d, "btn-light hover-btn-primary"), d[w + v](Q, (function(e) {
                 var a;
-                e[q](), 1 == (p = d[P + j]("data-page")) ? (a = o ? ce + "/blog" + c + "?max-results=" + f + "&page=" + p : ce + "/blog?max-results=" + f + "&page=" + p, t[B][R] = a) : (a = (p - 1) * n, Defer.js(ce + "/feeds/posts/summary/" + s + "?start-index=" + a + "&alt=json&callback=jo." + te + "_date&max-results=1"))
+                e[q](), 1 == (p = d[P + j]("data-page")) ? (a = o ? ce + "/blog" + c + "?max-results=" + f + "&page=" + p : ce + "/blog?max-results=" + f + "&page=" + p, t[B][R] = a) : (a = ((p - 1) * f) + 1, Defer.js(ce + "/feeds/posts/summary/" + s + "?start-index=" + a + "&orderby=published&alt=json&callback=jo." + te + "_date&max-results=1&_cb=" + Date.now()))
             }))), l[C](d), l
         }
         e[P + j]("data-pagination") != J ? (n = e[P + j]("data-posts"), o = e[P + j]("data-label"), s = (o = l(o)) ? "-/" + o + "/" : "", c = o ? "/label/" + o : "", Defer.js(ce + "/feeds/posts/summary/" + s + "?alt=json&callback=jo." + te + "_" + x + "&max-results=1"), d = je("max-results", de), u = je("page", de), f = d || n, p = u || 1, jo[te + "_" + x] = function(t) {
@@ -380,8 +344,10 @@ const jo = {};
                 De(t.pages, o) || (d = m(o, t.currentPage, ". . " + o), s[C](d)), t.currentPage != o && (o = m(t.currentPage + 1, "", '<svg aria-hidden="true" class="icon"><use xlink:href="#i-arrow-r"/></svg>'), s[C](o)), e[g] = "", ke(s, "pagination mb-0"), e[C](s), xe(e, "visually-hidden")
             }
         }, jo[te + "_date"] = function(e) {
-            e = (e = (e = e.feed.entry[0]).published.$t[F](0, 19) + e.published.$t[F](23, 29))[A]("+", "%2B"), e = ce + "/blog" + c + "?updated-max=" + e + "&max-results=" + f + "&page=" + p, t[B][R] = e
-        }) : xe(e, "visually-hidden")
+    var d = new Date(e.feed.entry[0].published.$t);
+    d.setSeconds(d.getSeconds() + 1);
+    e = d.toISOString()[F](0, 19) + "Z", e = ce + "/blog" + c + "?updated-max=" + e + "&max-results=" + f + "&page=" + p, t[B][R] = e
+}) : xe(e, "visually-hidden")
     }), null, {
         rootMargin: "200%"
     }), Qe ? at(!1) : (null !== d && d[$ + Y]("lazy", 1), a[w + v](X, at), a[w + v](V, at), a[w + v](W, at))
