@@ -1,3 +1,8 @@
+@charset "UTF-8";/*!
+ * jastar Theme  v0.1.3 (https://jastar.id/)
+ * Copyright 2018-2026 The jastar.id Authors
+ * Licensed under MIT 
+ */
 const jo = {};
 ! function() {
     var e, t = window,
